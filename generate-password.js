@@ -1,11 +1,15 @@
-function generatePassword(length) {
+function generatePassword(text, num, t){
   const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let newPassword = '';
+  const digits = '0123456789'
+  const symbols = '!#$%&()*+,-./:;<=>?@[]^_{|}~'
+  let newPassword = ''
+  if(text ===  'easy')  newPassword = alphabet
+  if(text === 'normal')  newPassword = alphabet + digits
+  if(text === 'hard')  newPassword = alphabet + digits + symbols
+ 
+  for(let i = 0; i < t; i++) {
+    console.log(newPassword.split('').sort(() => Math.random() - 0.5).join('').substring(0, num))
+  } 
+}   
 
-  for(let i = 0; i < length; i++) {
-    const randomSymbol = alphabet[0]; // я умею брать только первый символ из строки, а нужно взять один случайный символ :(
-    newPassword += randomSymbol;
-  }
-
-  return newPassword;
-}
+generatePassword('hard', 5, 3)
